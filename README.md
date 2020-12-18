@@ -5,7 +5,7 @@ ECLink is a enterprise grade url shortener software built with Laravel. Built to
 The following requirement are required at the minimum to run ECLink. These specs should allow you to use ECLink without any issues.
 
 ### Software Requirements
-- PHP 8.0 (Needed as we use new features in 8.0)
+- PHP 7.4+
 - NodeJS v14.15+
 - Apache2 or nginx  
 - MySQL 8.0 (That is what it is test on, so if you use something different, your mileage will vary)
