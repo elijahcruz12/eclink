@@ -17,7 +17,7 @@ class CreateLinksTable extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('user_id')->constrained();
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('url');
             $table->softDeletes();
             $table->timestamps();
