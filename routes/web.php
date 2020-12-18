@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Links;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,8 @@ Route::get('/' . config('eclink.suffix') . '/{slug}', function ($slug) {
         abort(500, 'Link does not exist.');
     }
     else{
+        Redis::zincrby('total.clicks', 1, $link->slug);
+        Redis::zincrby('user.clicks', 1, $link->user_id);
         return redirect()->away($link->url);
     }
 });

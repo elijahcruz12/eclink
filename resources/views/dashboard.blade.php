@@ -39,7 +39,7 @@
                     </div>
                     <div class="flex-grow text-right">
                         <p class="text-2xl text-gray-600">Total Clicks</p>
-                        <p class="text-3xl text-gray-900">0</p>
+                        <p class="text-3xl text-gray-900">{{ \Illuminate\Support\Facades\Redis::zscore('user.clicks', Auth::id()) }}</p>
                     </div>
                 </div>
                 <div class="rounded-md flex-1 flex bg-white px-4 py-4 my-2 sm:my-0">
