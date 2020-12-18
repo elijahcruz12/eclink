@@ -33,6 +33,8 @@ Route::get('/link/new', function () {
 
 require __DIR__.'/auth.php';
 
+require __DIR__.'/admin.php';
+
 Route::get('/' . config('eclink.suffix') . '/{slug}', function ($slug) {
     $link = Links::whereSlug($slug)->first();
     if($link == null){

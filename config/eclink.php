@@ -20,6 +20,11 @@ return [
     'allowed_domains' => env('DOMAINS_ALLOWED'),
 
     /**
+     * Here you can specify your admin emails.
+     */
+    'admin_emails' => explode(',', env('ADMIN_EMAILS', 'domin@email.com')),
+
+    /**
      * If set to true, users will be sent a email verification. You users will have to verify they're
      * email if this is set to true.
      */
@@ -30,4 +35,9 @@ return [
      *  The is required in order to seperate the links from the actual site. Say you wanted https://longlink.com/login as the short link 'login', Doing this would make logging into the site impossible. Please note that if you change this, every link you might've created will change, which means that they will break if elseware.
      */
     'suffix' => env('LINK_SUFFIX', 'l'),
+
+    /**
+     * Here you can specify a different logo to use with ECLink. Recommended PNG or SVG. Recommended size is 40x40 px for SVG and 140x140 minimum px for PNG or JPEG.
+     */
+    'logo' => env('SITE_LOGO', 'img/brand-default.png'),
 ];
