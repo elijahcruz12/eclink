@@ -1,7 +1,8 @@
 <?php
 
+use App\Jobs\RegisterClick;
 use App\Models\Links;
-use Illuminate\Support\Facades\Redis;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,9 +41,8 @@ Route::get('/' . config('eclink.suffix') . '/{slug}', function ($slug) {
     if($link == null){
         abort(500, 'Link does not exist.');
     }
-    else{
-        Redis::zincrby('total.clicks', 1, $link->slug);
-        Redis::zincrby('user.clicks', 1, $link->user_id);
-        return redirect()->away($link->url);
-    }
+    RegisterClick::dispatch($slug, $_SERVER['REMOTE_ADDR'], Carbon::now(config('app.timezone')), $link->user_id)
+        ->delay(now()->addMinutes());;
+
+    return redirect()->away($link->url);
 });

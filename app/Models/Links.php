@@ -28,6 +28,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Links whereUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Links whereUsersId($value)
  * @mixin \Eloquent
+ * @property int $user_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Links whereUserId($value)
  */
 class Links extends Model
 {
