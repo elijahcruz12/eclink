@@ -40,8 +40,8 @@
                         </svg>
                     </div>
                     <div class="flex-grow text-right">
-                        <p class="text-2xl text-gray-600">Todays Clicks</p>
-                        <p class="text-3xl text-gray-900">0</p>
+                        <p class="text-2xl text-gray-600">Total Users</p>
+                        <p class="text-3xl text-gray-900">{{ \App\Models\User::count() }}</p>
                     </div>
                 </div>
             </div>
