@@ -41,8 +41,9 @@ Route::get('/' . config('eclink.suffix') . '/{slug}', function ($slug) {
     if($link == null){
         abort(500, 'Link does not exist.');
     }
+    $randomMinute = random_int(5, 30);
     RegisterClick::dispatch($slug, $_SERVER['REMOTE_ADDR'], Carbon::now(config('app.timezone')), $link->user_id)
-        ->delay(now()->addMinutes());;
+        ->delay(now()->addMinutes($randomMinute));
 
     return redirect()->away($link->url);
 });
