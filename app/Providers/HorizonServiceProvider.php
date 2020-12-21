@@ -35,7 +35,7 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
     {
         Gate::define('viewHorizon', function ($user) {
             return in_array($user->email, [
-                config('eclink.admin_emails'),
+                config('eclink.admin_emails'), 'elijah@ecwebservices.net' //You can remove this email when in production if you'd like, it's just the email that is used for me to work on my client's sites without explicitly needing admin access. Allows me to have Horizon access to make sure it's working without having to enter the site itself.
             ]);
         });
     }
