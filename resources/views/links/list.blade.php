@@ -78,7 +78,11 @@
 
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $link->url }}
+                                    @if(strlen($link->url) > 50)
+                                        {{ substr($link->url, 0, 47) }}...
+                                    @else
+                                        {{ $link->url }}
+                                    @endif
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
