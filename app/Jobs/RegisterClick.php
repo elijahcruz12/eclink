@@ -66,6 +66,8 @@ class RegisterClick implements ShouldQueue
 
         Redis::zincrby('link.clicks', 1, $this->slug);
 
+        Redis::zincrby('link.'.$this->slug, 1, date('d/m/Y'));
+
         Redis::zincrby('user.clicks', 1, $this->user_id);
 
         Clicks::create([
