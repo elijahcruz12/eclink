@@ -36,14 +36,27 @@ require __DIR__.'/auth.php';
 
 require __DIR__.'/admin.php';
 
-Route::get('/' . config('eclink.suffix') . '/{slug}', function ($slug) {
-    $link = Links::whereSlug($slug)->first();
-    if($link == null){
-        abort(500, 'Link does not exist.');
-    }
-    $randomMinute = random_int(5, 30);
-    RegisterClick::dispatch($slug, $_SERVER['REMOTE_ADDR'], Carbon::now(config('app.timezone')), $link->user_id)
-        ->delay(now()->addMinutes($randomMinute));
+if(config('eclink.demo_mode') == false){
+    Route::get('/' . config('eclink.suffix') . '/{slug}', function ($slug) {
+        $link = Links::whereSlug($slug)->first();
+        if($link == null){
+            abort(500, 'Link does not exist.');
+        }
+        RegisterClick::dispatch($slug, $_SERVER['REMOTE_ADDR'], Carbon::now(config('app.timezone')), $link->user_id);
 
-    return redirect()->away($link->url);
-});
+        return redirect()->away($link->url);
+    });
+}
+else{
+    Route::get('/' . config('eclink.suffix') . '/{slug}', function ($slug) {
+        $link = Links::whereSlug($slug)->first();
+        if($link == null){
+            abort(500, 'Link does not exist.');
+        }
+        RegisterClick::dispatch($slug, $_SERVER['REMOTE_ADDR'], Carbon::now(config('app.timezone')), $link->user_id);
+
+        return view('demo.link')->with('link',$link);
+    });
+}
+
+

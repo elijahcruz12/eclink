@@ -40,4 +40,9 @@ return [
      * Here you can specify a different logo to use with ECLink. Recommended PNG or SVG. Recommended size is 40x40 px for SVG and 140x140 minimum px for PNG or JPEG.
      */
     'logo' => env('SITE_LOGO', 'img/brand-default.png'),
+
+    /**
+     * Leave this false. If you set to true, your links won't redirect, and will instead show a simple demo view.
+     */
+    'demo_mode' => env('DEMO_MODE', false),
 ];
