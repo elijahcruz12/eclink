@@ -61,7 +61,7 @@
                                     {{ $link->title }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <div>
+                                    <div class="min-w-max">
                                         <div class="mt-1 flex rounded-md shadow-sm">
                                             <div class="relative flex focus-within:z-10">
                                                 <input type="text" name="nouse" id="clip{{ $link->id }}" readonly class="focus:ring-indigo-500 focus:border-indigo-500 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" value="{{ url( config('eclink.suffix') . '/' . $link->slug ) }}">
