@@ -42,6 +42,9 @@
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Real Url
                                 </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Total Clicks
+                                </th>
                                 <th scope="col" class="relative px-6 py-3">
                                     <span class="sr-only">Edit</span>
                                 </th>
@@ -72,6 +75,14 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $link->url }}
+                                </td>
+
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    @if(\Illuminate\Support\Facades\Redis::zscore('link.clicks', $link->slug) != null)
+                                        {{ \Illuminate\Support\Facades\Redis::zscore('link.clicks', $link->slug) }}
+                                    @else
+                                        0
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <a href="#" class="text-indigo-600 hover:text-indigo-900">View</a><br>
