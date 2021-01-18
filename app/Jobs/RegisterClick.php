@@ -64,7 +64,7 @@ class RegisterClick implements ShouldQueue
     public function handle()
     {
 
-        $date = Carbon::createFromTimestamp($this->time);
+        $date = Carbon::now();
 
         Redis::zincrby('total.clicks', 1, $this->slug);
 

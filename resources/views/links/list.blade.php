@@ -83,7 +83,7 @@
 
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     @php
-                                    $carbon = \Illuminate\Support\Carbon::now()
+                                    $carbon = \Illuminate\Support\Carbon::now();
                                     @endphp
                                     @if(\Illuminate\Support\Facades\Redis::zscore('link.'.$link->slug, $carbon->year . $carbon->month . $carbon->day) != null)
                                         {{ \Illuminate\Support\Facades\Redis::zscore('link.'.$link->slug, $carbon->year . $carbon->month . $carbon->day) }}
