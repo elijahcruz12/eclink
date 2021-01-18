@@ -10,6 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redis;
 
 class RegisterClick implements ShouldQueue
@@ -62,11 +63,14 @@ class RegisterClick implements ShouldQueue
      */
     public function handle()
     {
+
+        $date = Carbon::createFromTimestamp($this->time);
+
         Redis::zincrby('total.clicks', 1, $this->slug);
 
         Redis::zincrby('link.clicks', 1, $this->slug);
 
-        Redis::zincrby('link.'.$this->slug, 1, date('d/m/Y'));
+        Redis::zincrby('link.'.$this->slug, 1, $date->year . $date->month . $date->day);
 
         Redis::zincrby('user.clicks', 1, $this->user_id);
 

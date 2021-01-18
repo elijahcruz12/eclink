@@ -42,6 +42,10 @@
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Real Url
                                 </th>
+
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Todays Clicks
+                                </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Total Clicks
                                 </th>
@@ -75,6 +79,17 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $link->url }}
+                                </td>
+
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    @php
+                                    $carbon = \Illuminate\Support\Carbon::now()
+                                    @endphp
+                                    @if(\Illuminate\Support\Facades\Redis::zscore('link.'.$link->slug, $carbon->year . $carbon->month . $carbon->day) != null)
+                                        {{ \Illuminate\Support\Facades\Redis::zscore('link.'.$link->slug, $carbon->year . $carbon->month . $carbon->day) }}
+                                    @else
+                                        0
+                                    @endif
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
