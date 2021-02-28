@@ -40,6 +40,11 @@
                     <x-slot name="content">
                         {{-- Admin --}}
                             <x-nav-admin-link />
+
+                        <!-- API Keys -->
+                        <x-dropdown-link :href="route('apikeys')">
+                            {{__('Api Keys')}}
+                        </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

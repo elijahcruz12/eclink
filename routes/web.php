@@ -24,6 +24,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/api-keys', function () {
+    return view('settings.apikeys');
+})->middleware(['auth'])->name('apikeys');
+
 Route::get('/links', function () {
     return view('links.list');
 })->middleware(['auth'])->name('links');
