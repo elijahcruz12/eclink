@@ -9,6 +9,7 @@ The following requirement are required at the minimum to run ECLink. These specs
 - NodeJS v14.15+
 - Apache2 or nginx  
 - MySQL 8.0 (That is what it is test on, so if you use something different, your mileage will vary)
+- Redis (Redis PHP extension is not required, but recommended. If not using the extension, [Predis\Predis](https://packagist.org/packages/predis/predis) Will be used
 
 You will also need the following PHP extensions:
 - BCMath
