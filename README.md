@@ -1,6 +1,8 @@
 # ECLink
 ECLink is a enterprise grade url shortener software built with Laravel. Built to be completely customizable, ECLink is also built with TailwindCSS and AlpineJS.
 
+Please note that ECLink is being redone from scratch, meaning that latest versions WILL NOT WORK.
+
 ## Requirements
 The following requirement are required at the minimum to run ECLink. These specs should allow you to use ECLink without any issues.
 
